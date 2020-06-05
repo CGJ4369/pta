@@ -1,0 +1,71 @@
+输入一个整数，输出每个数字对应的拼音。当整数为负数时，先输出fu字。十个数字对应的拼音如下：
+
+0: ling
+1: yi
+2: er
+3: san
+4: si
+5: wu
+6: liu
+7: qi
+8: ba
+9: jiu
+输入格式：
+
+输入在一行中给出一个整数，如：1234。
+
+提示：整数包括负数、零和正数。
+
+输出格式：
+
+在一行中输出这个整数对应的拼音，每个数字的拼音之间用空格分开，行末没有最后的空格。如 yi er san si。
+
+#include <stdio.h>
+#include <stdlib.h>
+ 
+void printNum(char c){
+	if(c=='0'){
+		printf("ling");
+	}else if(c=='1'){
+		printf("yi");
+	}else if(c=='2'){
+		printf("er");
+	}else if(c=='3'){
+		printf("san");
+	}else if(c=='4'){
+		printf("si");
+	}else if(c=='5'){
+		printf("wu");
+	}else if(c=='6'){
+		printf("liu");
+	}else if(c=='7'){
+		printf("qi");
+	}else if(c=='8'){
+		printf("ba");
+	}else if(c=='9'){
+		printf("jiu");
+	}
+}
+int main(int argc, char *argv[]) {
+	char a[20];
+	int i,k=0;
+	while(scanf("%s",a)!=EOF){
+		i = 0;
+		if(a[0]=='-'){
+			printf("fu");
+			k = 1;
+			i = 1;
+		}
+		for(; i < strlen(a);i++){
+			if(k){
+				printf(" ");
+				printNum(a[i]);
+			}else{
+				k = 1;
+				printNum(a[i]);
+			}	
+		}
+		printf("\n");
+	}
+	return 0;
+}
